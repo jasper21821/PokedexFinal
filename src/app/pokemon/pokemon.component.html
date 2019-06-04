@@ -1,21 +1,48 @@
-<h2>Pokemons</h2>
-<div *ngIf="pokemons">
-  <ul class="pokemons">
-    <li *ngFor="let pokemon of pokemons.results">
-      <span class="badge">{{pokemon.name}}</span> {{pokemons.id}}
-    </li>
-  </ul>
-</div>
-
-
 <div *ngIf="pokemon">
-  <ul class="pokemon">
-    <li>
-      <span class="badge">{{pokemon.name}}</span> {{pokemon.id}} 
-    </li>
-  </ul>
-</div>
+  <div class="pokemon">
+   
+    <div>{{pokemon.name | uppercase }} </div> 
+    <div>
+      <img width="100" [src]="pokemon.sprites.front_default">
+    </div>
+    <div>
+      ID : {{pokemon.id}}
+    </div>
+    <div>
+      Height : {{pokemon.height}} 
+    </div>
+    <div>
+      Weight : {{pokemon.weight}}
+    </div>
 
+    <h1>Moves</h1>
+    <div *ngFor="let item of pokemon.moves">
+      <ul>
+        <li>{{ item.move.name }}</li>
+      </ul>
+    </div>
+
+    <h1>Type</h1>
+      <div *ngFor="let item of pokemon.types">
+        {{ item.type.name }}
+      </div>
+
+    <h1>Abilities</h1>
+      <div *ngFor="let item of pokemon.abilities">
+        {{ item.ability.name }}
+      </div>
+
+    <h1>Stats</h1>
+      <div *ngFor="let item of pokemon.stats">
+        <ul>
+          <li>
+            {{ item.base_stat }} : {{ item.stat.name }}
+         </li>
+        </ul>
+      </div>
+
+  </div>
+</div>
 
 
 
