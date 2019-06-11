@@ -1,48 +1,14 @@
-<div *ngIf="pokemon">
-  <div class="pokemon">
-   
-    <div>{{pokemon.name | uppercase }} </div> 
-    <div>
-      <img width="100" [src]="pokemon.sprites.front_default">
-    </div>
-    <div>
-      ID : {{pokemon.id}}
-    </div>
-    <div>
-      Height : {{pokemon.height}} 
-    </div>
-    <div>
-      Weight : {{pokemon.weight}}
-    </div>
-
-    <h1>Moves</h1>
-    <div *ngFor="let item of pokemon.moves">
-      <ul>
-        <li>{{ item.move.name }}</li>
-      </ul>
-    </div>
-
-    <h1>Type</h1>
-      <div *ngFor="let item of pokemon.types">
-        {{ item.type.name }}
-      </div>
-
-    <h1>Abilities</h1>
-      <div *ngFor="let item of pokemon.abilities">
-        {{ item.ability.name }}
-      </div>
-
-    <h1>Stats</h1>
-      <div *ngFor="let item of pokemon.stats">
-        <ul>
-          <li>
-            {{ item.base_stat }} : {{ item.stat.name }}
-         </li>
-        </ul>
-      </div>
-
+<div *ngIf="pokemons">
+  <div *ngFor="let pokemon of pokemons.results" class="column"  [class.selected]="pokemon === selectedPokemon"(click)="onSelect(pokemon)">
+      {{ pokemon.name }}
+      <app-pokemon-sprite [pokename]="pokemon.name"></app-pokemon-sprite>
   </div>
 </div>
+
+<app-poke-details [pokemon]="selectedPokemon"></app-poke-details>
+
+
+
 
 
 

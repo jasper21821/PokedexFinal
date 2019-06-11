@@ -8,14 +8,21 @@ import { Pokemon } from '../pokemon';
   styleUrls: ['./pokemon.component.css']
 })
 export class PokemonComponent implements OnInit {
-  pokemon: Pokemon;
   pokemons: Pokemon[];
+  selectedPokemon: Pokemon;
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit() {
-    this.pokemonService.getPokemons().subscribe((data: Pokemon[]) => this.pokemons = data);
-    this.pokemonService.getPokemon(1).subscribe((data: Pokemon) => this.pokemon = data);
+    this.loadPokemons();
+  }
+
+  loadPokemons(){
+    this.pokemonService.getPokemons(0, 20).subscribe(data => this.pokemons = data);   
+  }
+
+  onSelect(pokemon: Pokemon): void {
+    this.pokemonService.getPokemon(pokemon.name).subscribe(data => this.selectedPokemon = data);
   }
 
 }

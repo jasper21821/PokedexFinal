@@ -1,0 +1,43 @@
+<div *ngIf="pokemon">
+   <div class="columns">
+
+      <div class="column">
+        <div>{{ pokemon.name | uppercase }}</div>
+        <img width="100" [src]="pokemon.sprites.front_default">
+        <div>ID : {{pokemon.id}}</div>
+        <div>Height : {{pokemon.height}}</div>
+        <div>Weight : {{pokemon.weight}}</div>
+      </div>  
+      
+      <div class="column">
+        <h1>Type</h1>
+          <div *ngFor="let item of pokemon.types">
+            {{ item.type.name }}
+          </div>
+      </div>
+
+      <div class="column">
+        <h1>Abilities</h1>
+          <div *ngFor="let item of pokemon.abilities">
+            {{ item.ability.name }}
+          </div>
+      </div>  
+      
+      <div class="column">
+        <h1>Stats</h1>
+          <div *ngFor="let item of pokemon.stats">
+              {{ item.base_stat }} : {{ item.stat.name }}
+          </div>
+      </div>
+
+      <div class="column">
+          <h1>Moves</h1>
+          <div *ngFor="let item of pokemon.moves">
+            <ul>
+              <li>{{ item.move.name }}</li>
+            </ul>
+          </div>
+        </div>
+
+  </div>  
+</div>
