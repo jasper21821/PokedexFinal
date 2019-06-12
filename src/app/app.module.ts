@@ -7,13 +7,15 @@ import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonService } from './pokemon.service';
 import { PokeDetailsComponent } from './poke-details/poke-details.component';
 import { PokemonSpriteComponent } from './pokemon-sprite/pokemon-sprite.component';
+import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonComponent,
     PokeDetailsComponent,
-    PokemonSpriteComponent
+    PokemonSpriteComponent,
+    PokemonSearchComponent
   ],
   imports: [
     BrowserModule,

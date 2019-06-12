@@ -12,12 +12,19 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  getPokemons(offset: number, limit: number): Observable<Pokemon[]>{
-    return this.http.get<Pokemon[]>(this.baseUrl+"?offset="+offset+"&limit="+limit);
+  getPokemons(offset: number, limit: number): Observable<Pokemon>{
+    return this.http.get<Pokemon>(this.baseUrl+"?offset="+offset+"&limit="+limit);
   }
 
   getPokemon(name: string): Observable<Pokemon> {
     return this.http.get<Pokemon>(this.baseUrl+'/'+name);
+  }
+
+  searchPokemon(pokename: string): Observable<Pokemon>{
+    if (!pokename.trim()){
+      return of ();
+    }
+    return this.http.get<Pokemon>(this.baseUrl+'/'+pokename);
   }
 
 }

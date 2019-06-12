@@ -8,8 +8,8 @@ import { Pokemon } from '../pokemon';
   styleUrls: ['./pokemon.component.css']
 })
 export class PokemonComponent implements OnInit {
-  pokemons: Pokemon[];
-  selectedPokemon: Pokemon;
+  pokemons: Pokemon;
+  count: number;
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -18,11 +18,10 @@ export class PokemonComponent implements OnInit {
   }
 
   loadPokemons(){
-    this.pokemonService.getPokemons(0, 20).subscribe(data => this.pokemons = data);   
-  }
-
-  onSelect(pokemon: Pokemon): void {
-    this.pokemonService.getPokemon(pokemon.name).subscribe(data => this.selectedPokemon = data);
+    this.pokemonService.getPokemons(0, 20).subscribe(data => {
+      this.pokemons = data
+      this.count = data.count
+    });   
   }
 
 }
