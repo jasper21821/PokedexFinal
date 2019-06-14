@@ -8,6 +8,9 @@ import { PokemonService } from './pokemon.service';
 import { PokeDetailsComponent } from './poke-details/poke-details.component';
 import { PokemonSpriteComponent } from './pokemon-sprite/pokemon-sprite.component';
 import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
+import { NgxPaginationModule } from "ngx-pagination";
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -15,14 +18,17 @@ import { PokemonSearchComponent } from './pokemon-search/pokemon-search.componen
     PokemonComponent,
     PokeDetailsComponent,
     PokemonSpriteComponent,
-    PokemonSearchComponent
+    PokemonSearchComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule,
+    NgxSpinnerModule
   ],
-  providers: [PokemonService],
+  providers: [PokemonService, NgxSpinnerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

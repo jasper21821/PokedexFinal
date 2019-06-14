@@ -9,7 +9,9 @@ import { Pokemon } from '../pokemon';
 })
 export class PokemonComponent implements OnInit {
   pokemons: Pokemon;
-  count: number;
+  pokemonCount: number;
+  page: number = 1;
+  count: number = 21;
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -18,10 +20,10 @@ export class PokemonComponent implements OnInit {
   }
 
   loadPokemons(){
-    this.pokemonService.getPokemons(0, 20).subscribe(data => {
-      this.pokemons = data
-      this.count = data.count
-    });   
+    this.pokemonService.getPokemonData().subscribe(data => {
+      this.pokemonCount = data.count
+      this.pokemonService.getPokemons(0, this.pokemonCount).subscribe(data => this.pokemons = data)
+    });
   }
 
 }

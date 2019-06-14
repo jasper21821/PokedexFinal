@@ -34,11 +34,9 @@
 
       <div class="column">
           <h1>Moves</h1>
-          <div *ngFor="let item of pokemon.moves">
             <ul>
-              <li>{{ item.move.name }}</li>
+              <li *ngFor="let item of pokemon.moves">{{ item.move.name }}</li>
             </ul>
-          </div>
         </div>
 
   </div>  

@@ -1,13 +1,19 @@
+<app-pokemon-search></app-pokemon-search>
+
 <div *ngIf="pokemons">
-  <div *ngFor="let pokemon of pokemons.results" class="column">
+  <div *ngFor="let pokemon of pokemons.results | paginate: { itemsPerPage: count, currentPage: page }" class="column">
+    <div class="pokename">{{ pokemon.name }}</div>
     <a routerLink="/pokemons/{{pokemon.name}}">
-      {{ pokemon.name }} 
       <app-pokemon-sprite [pokename]="pokemon.name"></app-pokemon-sprite>
     </a>
   </div>
 </div>
 
-<app-pokemon-search></app-pokemon-search>
+<div class="text-right">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
+
+
 
 
 
