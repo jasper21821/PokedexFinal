@@ -5,6 +5,7 @@ import {
 } from 'rxjs/operators';
 import { PokemonService } from "../pokemon.service";
 import { Pokemon } from '../pokemon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-search',
@@ -12,23 +13,17 @@ import { Pokemon } from '../pokemon';
   styleUrls: ['./pokemon-search.component.css']
 })
 export class PokemonSearchComponent implements OnInit {
-  pokemons$: Observable<Pokemon>;
-  private searchPokename = new Subject<string>();
-
-  constructor(private pokemonService: PokemonService) { }
-
-  search(pokename: string): void{
-    this.searchPokename.next(pokename);
-  }
+  pokename: string;
+  
+  constructor(private pokemonService: PokemonService, private router: Router) { }
 
   ngOnInit() {
-    this.pokemons$ = this.searchPokename.pipe(
-      debounceTime(2000),
-      
-      distinctUntilChanged(),
- 
-      switchMap((pokename: string) => this.pokemonService.searchPokemon(pokename)),
-    );
+    
+  }
+
+  searchPokemon(pokename : string){
+    this.pokemonService.getPokemon(pokename).subscribe(data => this.pokename = data.name);
+    this.router.navigate(['/pokemons/'+pokename]);
   }
 
 }

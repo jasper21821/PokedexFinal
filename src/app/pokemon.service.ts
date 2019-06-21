@@ -24,11 +24,4 @@ export class PokemonService {
     return this.http.get<Pokemon>(this.baseUrl+'/'+name);
   }
 
-  searchPokemon(pokename: string): Observable<Pokemon>{
-    if (!pokename.trim()){
-      return of ();
-    }
-    return this.http.get<Pokemon>(this.baseUrl+'/'+pokename);
-  }
-
 }

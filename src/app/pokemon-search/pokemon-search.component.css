@@ -1,0 +1,9 @@
+#search-component {
+    margin: 20px;
+}
+
+#search-button {
+    margin: 10px; 
+    text-align: center;
+    border-radius: 2.5px;
+}

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PokemonService } from "../pokemon.service";
 import { Pokemon } from '../pokemon';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-pokemon-sprite',
@@ -15,7 +14,7 @@ export class PokemonSpriteComponent implements OnInit {
   loading: boolean = true;
   
   
-  constructor(private pokemonService: PokemonService, private spinner: NgxSpinnerService) { }
+  constructor(private pokemonService: PokemonService) { }
 
   
   ngOnInit() {
